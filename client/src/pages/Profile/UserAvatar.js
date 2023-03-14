@@ -6,7 +6,7 @@ const UserAvatar = ({ userData }) => {
 	const usernames = onlineUsers.map(user => user.name)
 	const profile_pic = userData.profile_pic['picture_data']
 
-	const placeholderImage = 'http://localhost:3000/images/default_profilepic.jpeg'
+	const placeholderImage = 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/default_profilepic.jpeg'
 
 	if (usernames.includes(userData.username)) {
 		return (

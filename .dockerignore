@@ -1,0 +1,8 @@
+# flyctl launch added from .gitignore
+**/.DS_Store
+server/images/*
+!**/*server/images/default_profilepic.jpeg
+**/pgdata
+**/node_modules
+**/client/build
+fly.toml

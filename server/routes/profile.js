@@ -262,7 +262,7 @@ module.exports = (app, pool, upload, fs, path, bcrypt) => {
 
     app.post('/api/profile/setprofilepic', upload.single('file'), async (request, response) => {
         const session = request.session
-        const picture = 'http://localhost:3000/images/' + request.file.filename
+        const picture = 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/' + request.file.filename
         if (session.userid) {
             if (request.file.size > 5242880) {
                 return response.send('The maximum size for uploaded images is 5 megabytes.')
@@ -286,7 +286,7 @@ module.exports = (app, pool, upload, fs, path, bcrypt) => {
                 } else {
                     let oldImageData = profilePic.rows[0]['picture_data']
                     // path.resolve gets the absolute path of '../images'
-                    const oldImage = path.resolve(__dirname, '../images') + oldImageData.replace('http://localhost:3000/images', '')
+                    const oldImage = path.resolve(__dirname, '../images') + oldImageData.replace('http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images', '')
                     // fs.existsSync checks if the image already exists, so if there is already an image with same name
                     // in the images folder
                     // console.log('Set a new profile picture to replace the old one.')
@@ -315,7 +315,7 @@ module.exports = (app, pool, upload, fs, path, bcrypt) => {
 
     app.post('/api/profile/imageupload', upload.single('file'), async (request, response) => {
         const session = request.session
-        const picture = 'http://localhost:3000/images/' + request.file.filename
+        const picture = 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/' + request.file.filename
         if (session.userid) {
             if (request.file.size > 5242880) {
                 return response.send('The maximum size for uploaded images is 5 megabytes.')
@@ -385,8 +385,8 @@ module.exports = (app, pool, upload, fs, path, bcrypt) => {
             var pictureData = await pool.query(sql, [session.userid, picture_id])
 
             var oldImageData = pictureData.rows[0]['picture_data']
-            if (oldImageData !== 'http://localhost:3000/images/default_profilepic.jpeg') {
-                const oldImage = path.resolve(__dirname, '../images') + oldImageData.replace('http://localhost:3000/images', '');
+            if (oldImageData !== 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/default_profilepic.jpeg') {
+                const oldImage = path.resolve(__dirname, '../images') + oldImageData.replace('http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images', '');
 
                 if (fs.existsSync(oldImage)) {
                     fs.unlink(oldImage, (error) => {

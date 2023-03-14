@@ -218,7 +218,7 @@ const Profile = () => {
                             <div key={i}>
                                 <img onError={({ currentTarget }) => {
                                     currentTarget.onerror = null
-                                    currentTarget.src = 'http://localhost:3000/images/default_profilepic.jpeg'
+                                    currentTarget.src = 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/default_profilepic.jpeg'
                                 }}
                                     key={picture.picture_id} alt="random_picture" height="100px" src={picture.picture_data}></img>
                                 <Button onClick={() => { deleteImage(picture.picture_id) }} >Delete picture</Button>

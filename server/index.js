@@ -16,7 +16,7 @@ const http = require('http').Server(app) //required for socket to work
 app.use(cors())
 app.use(express.json())
 app.use(
-  express.static(path.join(__dirname, "../client/build"))
+  express.static("/app/client/build")
 )
 app.use(session({
   secret: 'secret',
@@ -31,20 +31,22 @@ app.use('/images', express.static('./images')) // to serve static files to path 
 
 const socketIO = require('socket.io')(http, {
   cors: {
-    origin: "http://localhost:3000"
+    origin: "*"
   }
 });
 
 // POSTGRES SETUP
 const Pool = require('pg').Pool
 
-const pool = new Pool({
-  user: pgUser,
-  password: pgPassword,
-  host: pgHost,
-  database: pgDatabase,
-  port: 5432
-})
+// const pool = new Pool({
+//   user: pgUser,
+//   password: pgPassword,
+//   host: pgHost,
+//   database: pgDatabase,
+//   port: 5432
+// })
+
+const pool = new Pool({connectionString: process.env.DATABASE_URL})
 
 const connectToDatabase = () => {
   pool.connect((err, client, release) => {
@@ -91,6 +93,6 @@ require('./routes/chat.js')(pool, socketIO)
 
 const PORT = config.PORT || 3001
 
-http.listen(config.PORT, () => {
-  console.log(` Server running on port ${config.PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+});
