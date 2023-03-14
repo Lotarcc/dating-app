@@ -93,6 +93,6 @@ require('./routes/chat.js')(pool, socketIO)
 
 const PORT = config.PORT || 3001
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 });
