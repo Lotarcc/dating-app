@@ -210,7 +210,7 @@ const UserProfile = () => {
 					{other_pictures.map((picture, i) =>
 						<img onError={({ currentTarget }) => {
 							currentTarget.onerror = null
-							currentTarget.src = '${process.env.REACT_APP_FQDN}/images/default_profilepic.jpeg'
+							currentTarget.src = `${process.env.REACT_APP_FQDN}/images/default_profilepic.jpeg`
 						}}
 							key={picture.picture_id} alt="random_picture" height="200px" src={picture.picture_data}></img>
 					)}
