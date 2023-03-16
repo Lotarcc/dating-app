@@ -28,7 +28,7 @@ Prep: Please make sure you have [Docker](https://www.docker.com/) running on you
 
 4. Login to your instance using public ip with key-pair you've created before
 5. git clone https://github.com/pawaters/matcha
-6. In `client/App.js` change the Socket URL to `http://<PUBLIC-DNS-OF-YOUR-INSTANCE>`
+6. In `.env` change the REACT_APP_FQDN to `http://<PUBLIC-DNS-OF-YOUR-INSTANCE>` without trailing "/"
 6. Go to root folder (outside of server or clinet) and do docker-compose up --build for attached view of the server or docker-compose up --build -d for detached
 7. To create users, go to /script folder, Run docker-compose up --build (takes 3 minutes)
 8. Go to `http://<PUBLIC-DNS-OF-YOUR-INSTANCE>`, `http://<PUBLIC-DNS-OF-YOUR-INSTANCE>:8080` for db admin, All fake users' password is Matcha1!
