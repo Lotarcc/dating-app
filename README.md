@@ -17,11 +17,13 @@ Prep: Please make sure you have [Docker](https://www.docker.com/) running on you
 
 1. Create a Key-pair PEM or PPK depends on your platform
 2. Create a Security Groups with following rules:
+
 | Type       | Protocol | Port Range | Source    |
 |------------|----------|------------|-----------|
 | Custom TCP | TCP      | 8080       | 0.0.0.0/0 |
 | SSH        | TCP      | 22         | 0.0.0.0/0 |
 | HTTP       | TCP      | 80         | 0.0.0.0/0 |
+
 3. Create an EC2 Instance using Ubuntu or Amazon Linux 2 AMI at least t3.medium on Default VPC if you don't want to setup internet gateway on your own or in your VPC with Internet Gateway by using this doc [Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) and public ip.
 
 4. Login to your instance using public ip with key-pair you've created before
