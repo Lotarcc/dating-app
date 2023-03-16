@@ -91,6 +91,11 @@ require('./routes/resetpassword.js')(app, pool, bcrypt, transporter, crypto)
 require('./routes/chat_api.js')(app, pool)
 require('./routes/chat.js')(pool, socketIO)
 
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+    res.sendFile('/app/client/build/index.html');
+});
+
 const PORT = config.PORT || 3001
 
 http.listen(PORT, () => {
