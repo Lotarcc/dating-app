@@ -48,7 +48,7 @@ module.exports = function (app, pool, bcrypt, transporter, crypto) {
                 to: paramsForMail.email,
                 subject: 'Here is the link to reset your password',
                 html: `<p>Click the link below to reset your password.</p>
-                        <a href="http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/resetpassword/${paramsForMail.username}/${paramsForMail.reset_code}">Link</a>
+                        <a href="${process.env.REACT_APP_FQDN}/resetpassword/${paramsForMail.username}/${paramsForMail.reset_code}">Link</a>
                         <p>- Matcha team</p>`
             }
             await transporter.sendMail(mailOptions, function (error, info) {

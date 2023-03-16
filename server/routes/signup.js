@@ -108,7 +108,7 @@ module.exports = function (app, pool, bcrypt, transporter, crypto) {
           to: email,
           subject: 'Verify your email address for Matcha',
           html: `<p>Click the link below to verify your account for Matcha</p>
-                <a href="http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/confirm/${username}/${code}">Link</a>
+                <a href="${process.env.REACT_APP_FQDN}/confirm/${username}/${code}">Link</a>
                 <p>- Matcha team</p>`
         }
 

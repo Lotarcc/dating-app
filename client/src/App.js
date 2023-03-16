@@ -66,7 +66,7 @@ const App = () => {
     const user = useSelector(state => state.user)
 
     useEffect(() => {
-        setSocket(socketIO('http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/'))
+        setSocket(socketIO(process.env.REACT_APP_FQDN))
     }, [])
 
     useEffect(() => {

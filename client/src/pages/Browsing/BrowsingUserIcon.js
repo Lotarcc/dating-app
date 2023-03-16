@@ -2,12 +2,13 @@ import { Avatar, Box, styled, Badge } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+
 const BrowsingUserIcon = ({ user }) => {
 	const navigate = useNavigate()
 	const onlineUsers = useSelector(state => state.onlineUsers)
 	const usernames = onlineUsers.map(user => user.name)
 
-	const placeholderImage = 'http://ec2-13-50-101-148.eu-north-1.compute.amazonaws.com/images/default_profilepic.jpeg'
+	const placeholderImage = `${process.env.REACT_APP_FQDN}/images/default_profilepic.jpeg`
 
 	const StyledBadge = styled(Badge)(({ theme }) => ({
 		'& .MuiBadge-badge': {
